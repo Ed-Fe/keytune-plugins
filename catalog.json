@@ -1,4 +1,16 @@
 {
   "schema_version": 1,
-  "plugins": []
+  "plugins": [
+    {
+      "id": "org.keytune.now-playing-example",
+      "name": "Exemplo: faixa atual",
+      "version": "1.1.0",
+      "description": "Demonstra menus, abas, telas, reprodução, biblioteca e configurações privadas.",
+      "author": "Projeto KeyTune",
+      "homepage": "https://github.com/Ed-Fe/KeyTune/tree/645fcf387c14b4a86db878077ea5d5dee3bed8d2/examples/plugins/now-playing",
+      "download_url": "https://github.com/Ed-Fe/keytune-plugins/releases/download/now-playing-example-v1.1.0/now-playing-example-1.1.0.ktplugin",
+      "sha256": "7a282066a75e3a94cb8143b57505fe22205a9e78a40b1d1225c8baa84b33c960",
+      "verified": false
+    }
+  ]
 }
