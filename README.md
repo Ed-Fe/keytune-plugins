@@ -1,27 +1,27 @@
-# Plugins do KeyTune
+# KeyTune plugins
 
-Catálogo público usado pelo marketplace do KeyTune 2. O player consulta `catalog.json` na branch `main`.
+Public community catalog for the KeyTune 2 marketplace. The player reads `catalog.json` from the `main` branch.
 
-## Instalar
+## Install
 
-No gerenciador de plugins do KeyTune, escolha **Abrir marketplace**, selecione o plugin e confirme os dados e permissões apresentados. Também é possível baixar um arquivo `.ktplugin` nas Releases e instalá-lo pelo gerenciador.
+In KeyTune's plugin manager, choose **Open marketplace**, select a plugin, and review its details and permissions before confirming. You can also download a `.ktplugin` release asset and install it through the manager.
 
-Plugins são código Python com acesso ao computador. Instale apenas plugins de autores em quem você confia. O processo separado isola falhas comuns, mas não é uma sandbox de segurança.
+Plugins are Python code with access to your computer. Install only plugins from authors you trust. A separate process isolates ordinary failures but is not a security sandbox.
 
-## Contribuir
+## Contribute
 
-1. Crie seu plugin seguindo o [guia de desenvolvimento](https://github.com/Ed-Fe/KeyTune/blob/main/docs/plugins.md).
-2. Publique o pacote `.ktplugin` em uma Release pública do seu repositório.
-3. Calcule o SHA-256 do arquivo final; no PowerShell: `Get-FileHash arquivo.ktplugin -Algorithm SHA256`.
-4. Abra uma pull request adicionando ou atualizando uma entrada em `catalog.json`, com id, nome, versão, descrição, autor, homepage, URL HTTPS do pacote, SHA-256 em minúsculas e `verified: false`.
-5. Aguarde a validação automática e a revisão de um mantenedor.
+1. Create a plugin following the developer guide: [English](https://github.com/Ed-Fe/KeyTune/blob/main/docs/plugins.en.md), [Português](https://github.com/Ed-Fe/KeyTune/blob/main/docs/plugins.md), or [Español](https://github.com/Ed-Fe/KeyTune/blob/main/docs/plugins.es.md).
+2. Publish the `.ktplugin` package in a public release of your repository.
+3. Calculate the final file's SHA-256; in PowerShell: `Get-FileHash file.ktplugin -Algorithm SHA256`.
+4. Open a pull request adding or updating an entry in `catalog.json`: ID, name, version, description, author, homepage, HTTPS package URL, lowercase SHA-256, and `verified: false`.
+5. Wait for automated validation and maintainer review.
 
-Publique uma nova versão quando alterar um pacote. Não substitua arquivos já catalogados. Cada id aparece apenas uma vez no catálogo, apontando para a versão distribuída atualmente.
+Publish a new version whenever a package changes. Do not replace already cataloged assets. Each ID appears once in the catalog, pointing to the currently distributed version.
 
-O campo `verified` é reservado aos mantenedores após revisão humana da procedência; não representa uma garantia de segurança. A automação verifica schema, ids únicos, download, checksum, caminhos do ZIP, manifesto, entrypoint e compatibilidade com a versão de referência do KeyTune. Ela não executa o plugin.
+The `verified` field is reserved for maintainers after human review of provenance; it does not guarantee security. Automation checks the schema, unique IDs, download, checksum, ZIP paths, manifest, entrypoint, and compatibility with the reference KeyTune version. It does not execute the plugin.
 
-## Manutenção
+## Maintenance
 
-O workflow fixa o código do KeyTune em um commit revisado. Atualize essa referência quando o contrato suportado mudar. Alterações no workflow e no validador também exigem revisão dos mantenedores.
+The workflow pins KeyTune's code to a reviewed commit. Update that reference when the supported contract changes. Workflow and validator changes also require maintainer review.
 
-Para validar localmente, instale `jsonschema` e execute `python scripts/validate_catalog.py --keytune ../Media-Player`. O comando baixa os pacotes e os instala somente em diretórios temporários, sem ativá-los.
+To validate locally, install `jsonschema` and run `python scripts/validate_catalog.py --keytune ../Media-Player`. This downloads packages and installs them only in temporary directories, without activation.
