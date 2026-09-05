@@ -1,0 +1,28 @@
+name: Validar catálogo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: Ed-Fe/KeyTune
+          ref: 645fcf387c14b4a86db878077ea5d5dee3bed8d2
+          path: .keytune
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install jsonschema==4.23.0
+      - run: python scripts/validate_catalog.py --keytune .keytune
